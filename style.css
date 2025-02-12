@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#reasons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#reasons-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#reasons-list li:last-child {
+    border-bottom: none;
+}
+
+#edit-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#edit-button:hover {
+    background-color: #444;
+}
