@@ -14,6 +14,8 @@
             text-align: center;
             padding: 50px;
             animation: fadeIn 1s ease-in-out;
+            overflow: hidden;
+            position: relative;
         }
         
         .container {
@@ -25,6 +27,8 @@
             box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease-in-out;
             animation: slideIn 1s ease-in-out;
+            position: relative;
+            z-index: 2;
         }
         
         .container:hover {
@@ -84,6 +88,21 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes drawFlowers {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Rose_icon.svg/1024px-Rose_icon.svg.png') no-repeat center;
+            background-size: contain;
+            animation: drawFlowers 5s infinite;
+        }
     </style>
 </head>
 <body>
@@ -92,7 +111,7 @@
         <p id="frase">Eres la razón por la que mi corazón sonríe.</p>
         <button onclick="mostrarFrase()">Ver otra razón</button>
     </div>
-
+    
     <script>
         const frases = [
             "Tu risa ilumina mis días.",
@@ -126,6 +145,23 @@
                 fraseElement.style.opacity = "1";
             }, 500);
         }
+
+        function crearFlores() {
+            for (let i = 0; i < 10; i++) {
+                let flower = document.createElement("div");
+                flower.className = "flower";
+                flower.style.left = Math.random() * window.innerWidth + "px";
+                flower.style.top = Math.random() * window.innerHeight + "px";
+                flower.style.animationDuration = (Math.random() * 5 + 3) + "s";
+                document.body.appendChild(flower);
+
+                setTimeout(() => {
+                    flower.remove();
+                }, 5000);
+            }
+        }
+
+        setInterval(crearFlores, 3000);
     </script>
 </body>
 </html>
