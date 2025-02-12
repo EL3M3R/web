@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>200 Razones para Estar Contigo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff66b2, #ffcc00);
             color: #ffffff;
             text-align: center;
             padding: 50px;
         }
-
         .container {
             max-width: 600px;
             margin: auto;
-            background: #1e1e1e;
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
         }
-
+        .container:hover {
+            transform: scale(1.05);
+        }
         h1 {
-            color: #ff66b2;
+            color: #ffcc00;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-
+        p {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
         button {
-            background-color: #ff66b2;
+            background-color: #ffcc00;
             border: none;
             padding: 10px 20px;
             font-size: 18px;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
+            color: #000;
+            font-weight: bold;
         }
-
         button:hover {
-            background-color: #e65c9c;
+            background-color: #e6b800;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>200 Razones para Estar Contigo</h1>
@@ -80,5 +87,4 @@
         }
     </script>
 </body>
-
 </html>
