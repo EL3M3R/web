@@ -88,20 +88,40 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes drawFlowers {
-            0% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0; transform: scale(1.5); }
+        
+        @keyframes growFlower {
+            0% { transform: scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .flower {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Rose_icon.svg/1024px-Rose_icon.svg.png') no-repeat center;
-            background-size: contain;
-            animation: drawFlowers 5s infinite;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: red;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            animation: growFlower 5s infinite;
+        }
+        
+        .flower::before, .flower::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: red;
+        }
+        
+        .flower::before {
+            top: -15px;
+            left: 0;
+        }
+        
+        .flower::after {
+            left: -15px;
+            top: 0;
         }
     </style>
 </head>
@@ -152,12 +172,9 @@
                 flower.className = "flower";
                 flower.style.left = Math.random() * window.innerWidth + "px";
                 flower.style.top = Math.random() * window.innerHeight + "px";
-                flower.style.animationDuration = (Math.random() * 5 + 3) + "s";
                 document.body.appendChild(flower);
 
-                setTimeout(() => {
-                    flower.remove();
-                }, 5000);
+                setTimeout(() => flower.remove(), 8000);
             }
         }
 
