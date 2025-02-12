@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>200 Razones para Estar Contigo</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #ff66b2, #ffcc00);
             color: #ffffff;
             text-align: center;
             padding: 50px;
+            animation: fadeIn 1s ease-in-out;
         }
+        
         .container {
             max-width: 600px;
             margin: auto;
@@ -20,20 +24,28 @@
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease-in-out;
+            animation: slideIn 1s ease-in-out;
         }
+        
         .container:hover {
             transform: scale(1.05);
         }
+        
         h1 {
             color: #ffcc00;
             font-size: 24px;
             margin-bottom: 20px;
+            animation: pulse 2s infinite;
         }
+        
         p {
             font-size: 18px;
             font-style: italic;
             margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInText 1.5s ease-in-out forwards;
         }
+        
         button {
             background-color: #ffcc00;
             border: none;
@@ -44,9 +56,33 @@
             transition: 0.3s;
             color: #000;
             font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
+        
         button:hover {
             background-color: #e6b800;
+            transform: translateY(-3px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -83,7 +119,12 @@
 
         function mostrarFrase() {
             const index = Math.floor(Math.random() * frases.length);
-            document.getElementById("frase").innerText = frases[index];
+            const fraseElement = document.getElementById("frase");
+            fraseElement.style.opacity = "0";
+            setTimeout(() => {
+                fraseElement.innerText = frases[index];
+                fraseElement.style.opacity = "1";
+            }, 500);
         }
     </script>
 </body>
